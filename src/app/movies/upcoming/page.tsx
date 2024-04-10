@@ -26,7 +26,7 @@ const page = async ({ searchParams }: Props) => {
         <div className="flex flex-col">
           <h1 className="text-2xl font-medium">Upcoming Movies</h1>
         </div>
-        <div className="grid grid-cols-4 mt-4 gap-4">
+        <div className="grid mt-4 gap-4 max-md:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {upcomingMovies.results.map((movie: IMovieCard) => (
             <MovieCard key={movie?.id} movie={movie} />
           ))}

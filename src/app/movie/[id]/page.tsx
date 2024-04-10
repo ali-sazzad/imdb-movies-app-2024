@@ -1,7 +1,7 @@
-// import CastCard, { ICastCard } from "@/components/CastCard";
+import CastCard, { ICastCard } from "@/components/CastCard";
 import MovieCard, { IMovieCard } from "@/components/MovieCard";
 import { EMPTY_MOVIE_URL, IMAGE_URL } from "@/config";
-// import dayjs from "dayjs";
+import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -44,10 +44,10 @@ const page = async ({ params }: IParamsMovieDetails) => {
   return (
     <main className="mt-5 flex flex-col">
       <div className="w-[1000px] max-w-full px-4 mx-auto">
-        <div className="flex flex-col mt-6">
-          <div className="flex gap-7">
+        <div className="flex flex-row mt-6">
+          <div className="flex flex-col justify-between md:flex-row gap-7">
             <div className="flex relative">
-              <div className="w-[270px] h-[400px] relative">
+              <div className="w-[350px] h-[400px] relative">
                 <Image
                   src={
                     movie?.poster_path
@@ -101,13 +101,13 @@ const page = async ({ params }: IParamsMovieDetails) => {
           <div className="flex justify-between items-center mt-4">
             <h1 className="text-2xl font-medium">Top Cast</h1>
             <Link
-              href={`/movie/${id}/casts`}
+              href={`/movie/${id}/cast`}
               className="py-2 px-5 bg-slate-800 text-md font-normal text-white"
             >
               See all
             </Link>
           </div>
-          <div className="grid grid-cols-4 mt-4 gap-4">
+          <div className="grid mt-4 gap-4 max-md:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {movieCast?.cast?.slice(0, 4).map((cast: ICastCard) => (
               <CastCard key={cast?.id} cast={cast} />
             ))}
@@ -123,7 +123,7 @@ const page = async ({ params }: IParamsMovieDetails) => {
               See all
             </Link>
           </div>
-          <div className="grid grid-cols-4 mt-4 gap-4">
+          <div className="grid mt-4 gap-4 max-md:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {recommendations?.results?.slice(0, 4).map((movie: IMovieCard) => (
               <MovieCard key={movie?.id} movie={movie} />
             ))}
